@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>My Portfolio</h1>
+        <p>Welcome to my personal website</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+
+        <main>
+            <section id="about">
+                <h2>About Me</h2>
+                <img src="image2.jpg"
+                     alt="Profile picture" class="profile">
+                <p>Hello! I am a student interested in web development
+                   and programming. I enjoy learning new technologies.</p>
+                <p>Visit <a href="https://www.google.com">Google</a>
+                   to explore the web.</p>
+            </section>
+
+            <section id="skills">
+                <h2>My Skills</h2>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Python</li>
+                </ul>
+
+                <h3>My Learning Goals</h3>
+                <ol>
+                    <li>Learn JavaScript</li>
+                    <li>Build websites</li>
+                    <li>Create projects</li>
+                </ol>
+            </section>
+
+            <section id="projects">
+                <h2>My Projects</h2>
+
+                <article>
+                    <h3>Portfolio Website</h3>
+                    <p>A simple website created using HTML and CSS.</p>
+                </article>
+
+                <article>
+                    <h3>Student Management System</h3>
+                    <p>A project to store and manage student details.</p>
+                </article>
+            </section>
+
+            <section id="education">
+                <h2>Education Details</h2>
+                <table>
+                    <tr>
+                        <th>Course</th>
+                        <th>Institution</th>
+                        <th>Year</th>
+                    </tr>
+                    <tr>
+                        <td>Degree</td>
+                        <td>My College</td>
+                        <td>2024</td>
+                    </tr>
+                    <tr>
+                        <td>Postgraduate</td>
+                        <td>My College</td>
+                        <td>2026</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Enter your name"
+                           required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email"
+                           placeholder="Enter your email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" rows="4"
+                              placeholder="Write your message"></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </main>
+
+        <aside>
+            <h3>Quick Information</h3>
+            <p><strong>Name:</strong> Your Name</p>
+            <p><strong>Interest:</strong> Web Development</p>
+            <p><strong>Hobby:</strong> Coding and Reading</p>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 My Personal Portfolio. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
