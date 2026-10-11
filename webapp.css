@@ -1,0 +1,226 @@
+
+/* Import stylish fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+/* General styling */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    background-color: #F8F3EB;
+    color: #49372B;
+    line-height: 1.7;
+}
+
+/* Navigation bar */
+.navbar {
+    background-color: #4B3629 !important;
+    box-shadow: 0 3px 12px rgba(60, 40, 25, 0.12);
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    color: #F3E4CE !important;
+}
+
+.nav-link {
+    color: #F3E4CE !important;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #D6B995 !important;
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(135deg, #EFE2D0, #E3CCB0);
+    padding: 90px 20px !important;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    color: #4B3629;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    color: #715744;
+    margin: 20px 0 28px;
+}
+
+/* Main headings */
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #563E2E;
+    font-weight: 600;
+}
+
+h3 {
+    font-family: 'Playfair Display', serif;
+    color: #634832;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #79563B !important;
+    border-color: #79563B !important;
+    color: #FFF9F1 !important;
+    border-radius: 30px;
+    padding: 11px 24px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #4B3629 !important;
+    border-color: #4B3629 !important;
+    transform: translateY(-2px);
+}
+
+/* Feature cards */
+.custom-card {
+    background-color: #FFFCF7;
+    border: 1px solid #E7D8C5;
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 5px 18px rgba(83, 58, 37, 0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.custom-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(83, 58, 37, 0.14);
+}
+
+.custom-card h3 {
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.custom-card p {
+    color: #776454;
+}
+
+/* Services section */
+.services {
+    background-color: #EDE0CF;
+}
+
+.service-box {
+    background-color: #FFFCF7;
+    padding: 30px;
+    border: 1px solid #E3D0BA;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(83, 58, 37, 0.07);
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+}
+
+.service-box p {
+    color: #776454;
+}
+
+/* Contact form */
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    background-color: #FFFCF7;
+    padding: 30px;
+    border: 1px solid #E7D8C5;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(83, 58, 37, 0.09);
+}
+
+.form-label {
+    color: #563E2E;
+    font-weight: 600;
+}
+
+.form-control {
+    padding: 12px;
+    border: 1px solid #D8C5AF;
+    border-radius: 9px;
+    background-color: #FFFDF9;
+    color: #49372B;
+}
+
+.form-control:focus {
+    border-color: #967253;
+    box-shadow: 0 0 0 3px rgba(150, 114, 83, 0.16);
+}
+
+/* Alerts */
+.alert-info {
+    background-color: #EFE2D0;
+    border-color: #D6B995;
+    color: #563E2E;
+}
+
+.alert-success {
+    background-color: #E6EBDD;
+    border-color: #B7C4A5;
+    color: #3E5234;
+}
+
+.alert-danger {
+    background-color: #F4DEDA;
+    border-color: #D8AAA0;
+    color: #813D32;
+}
+
+/* Footer */
+footer {
+    background-color: #38271E !important;
+    color: #F3E4CE !important;
+    padding: 22px !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 18px !important;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .service-box {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .navbar-brand {
+        font-size: 23px;
+    }
+
+    section h2 {
+        font-size: 27px;
+    }
+}
