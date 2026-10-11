@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Task Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: navy;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        input {
+            width: 95%;
+        }
+
+        button {
+            background-color: navy;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: royalblue;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: navy;
+            color: white;
+        }
+
+        .fail {
+            background-color: #ffcccc;
+        }
+
+        #message {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Student Task Management</h1>
+
+    <form id="studentForm">
+        <input type="text" id="studentName"
+               placeholder="Enter Student Name">
+
+        <input type="text" id="subject"
+               placeholder="Enter Subject">
+
+        <input type="number" id="marks"
+               placeholder="Enter Marks" min="0" max="100">
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <p id="message"></p>
+
+    <button type="button" id="averageBtn">Calculate Average</button>
+    <button type="button" id="removeBtn">Remove Student by Name</button>
+
+    <p id="average"></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentTable"></tbody>
+    </table>
+</div>
+
+<script>
+    // Array to store student objects
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+
+    const form = document.getElementById("studentForm");
+    const table = document.getElementById("studentTable");
+    const message = document.getElementById("message");
+
+    // Save data in localStorage
+    const saveData = () => {
+        localStorage.setItem("students", JSON.stringify(students));
+    };
+
+    // Display students using DOM manipulation
+    function displayStudents() {
+        table.innerHTML = "";
+
+        students.forEach(function(student) {
+            const row = document.createElement("tr");
+
+            if (student.marks < 50) {
+                row.classList.add("fail");
+            }
+
+            const result = student.marks >= 50 ? "Pass" : "Fail";
+
+            row.innerHTML = `
+                <td>${student.name}</td>
+                <td>${student.subject}</td>
+                <td>${student.marks}</td>
+                <td>${result}</td>
+            `;
+
+            table.appendChild(row);
+        });
+    }
+
+    // Add student
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("studentName").value.trim();
+        const subject = document.getElementById("subject").value.trim();
+        const marksValue = document.getElementById("marks").value;
+
+        if (name === "" || subject === "" || marksValue === "") {
+            alert("Please fill in all fields!");
+            return;
+        }
+
+        const marks = Number(marksValue);
+
+        if (marks < 0 || marks > 100) {
+            alert("Marks must be between 0 and 100!");
+            return;
+        }
+
+        const student = {
+            name: name,
+            subject: subject,
+            marks: marks
+        };
+
+        students.push(student);
+
+        saveData();
+        displayStudents();
+
+        message.textContent = "Student added successfully!";
+
+        setTimeout(() => {
+            message.textContent = "";
+        }, 3000);
+
+        form.reset();
+    });
+
+    // Calculate average using reduce()
+    document.getElementById("averageBtn").addEventListener("click", function() {
+        if (students.length === 0) {
+            document.getElementById("average").textContent =
+                "No student records available.";
+            return;
+        }
+
+        const total = students.reduce(
+            (sum, student) => sum + student.marks, 0
+        );
+
+        const average = total / students.length;
+
+        document.getElementById("average").textContent =
+            "Average Marks: " + average.toFixed(2);
+    });
+
+    // Remove student by name using filter()
+    document.getElementById("removeBtn").addEventListener("click", function() {
+        const name = prompt("Enter the student name to remove:");
+
+        if (name === null || name.trim() === "") {
+            return;
+        }
+
+        const oldLength = students.length;
+
+        students = students.filter(
+            student => student.name.toLowerCase() !== name.trim().toLowerCase()
+        );
+
+        if (students.length === oldLength) {
+            alert("Student not found!");
+        } else {
+            saveData();
+            displayStudents();
+            alert("Student record removed successfully!");
+        }
+    });
+
+    // Callback function example
+    function showStudents(callback) {
+        callback();
+    }
+
+    showStudents(displayStudents);
+</script>
+
+</body>
+</html>
